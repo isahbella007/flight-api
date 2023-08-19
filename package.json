@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll --verbose",
+    "testUC": "cd src/Test/unit && jest --watchAll --verbose" ,
     "start": "nodemon dist/Express/index.js",
     "dev": "nodemon src/Express/index.ts",
     "build": "tsc -p ."

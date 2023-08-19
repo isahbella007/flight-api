@@ -1,5 +1,4 @@
 import ApiError from "../Util/apiError";
-import searchSchema, { searchType } from "../search.type";
 import FlightApi from "../services/flightApi";
 
 class searchUseCase {
@@ -8,22 +7,23 @@ class searchUseCase {
         this.service = service
     } 
 
-    async validateSeachParams(dep_iata:string, arr_iata:string){
+    async validateSeachParams(departureIATA:string, arrivalIata:string){
         const onlyLettersPattern = /^[A-Za-z]+$/;
+        const datePattern = /^\d{4}-\d{2}-\d{2}$/
 
-        if(!dep_iata || !arr_iata){
+        if(!departureIATA || !arrivalIata){
             throw new ApiError("Missing required paramters", 400)
         }
 
-        if(dep_iata.length != 3 || arr_iata.length != 3){ 
+        if(departureIATA.length != 3 || arrivalIata.length != 3){ 
             throw new ApiError("Lenght must be equal to 3", 400)
         }
 
-        if(!onlyLettersPattern.test(dep_iata) || !onlyLettersPattern.test(arr_iata)){ 
+        if(!onlyLettersPattern.test(departureIATA) || !onlyLettersPattern.test(arrivalIata)){ 
             throw new ApiError("Only strings are allowed", 400)
         }
         
-        return this.service.getFlightDetails(dep_iata, arr_iata)
+        return this.service.getFlightDetails(departureIATA, arrivalIata)
     }
 }
 
