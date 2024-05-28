@@ -8,7 +8,7 @@ const server = app.listen(port, () => {console.log("Server is running..")})
 function exitHandler(){ 
     if(server){ 
         server.close(() => { 
-            console.log("Server shutting downnn")
+            console.log("Server shutting tetsing muh")
             process.exit(0)
         })
     }else{ 
